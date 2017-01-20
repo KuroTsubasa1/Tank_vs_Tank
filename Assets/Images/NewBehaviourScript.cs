@@ -5,6 +5,7 @@ public class NewBehaviourScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		print(Screen.currentResolution);
 		((MovieTexture)GetComponent<Renderer>().material.mainTexture).Play();
 	}
 	

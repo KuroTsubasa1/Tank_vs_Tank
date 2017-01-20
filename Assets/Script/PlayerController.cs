@@ -24,17 +24,13 @@ public class PlayerController : MonoBehaviour {
 	void Update () {
 
         aRot = this.transform.rotation.y;
-        print("aRot: " + aRot);
-        print("P y" + this.transform.rotation.y);
         CC.SimpleMove(new Vector3(0, 0, fall) * Time.deltaTime);
         if (!CC.isGrounded)
         {
             fall = 1;
             CC.SimpleMove(new Vector3(0, 0, fall));
-            print("!grounded");
         }else
         {
-            print("is grounded");
             fall = 0;
         }
         
