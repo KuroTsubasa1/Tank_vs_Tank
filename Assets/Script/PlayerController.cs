@@ -1,12 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
+using InControl;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : MonoBehaviour
+{
+
+    private InputDevice joystick;
+
+    private void Awake()
+    {
+        joystick = InputManager.Devices[0];
+    }
 
     public GameObject Player1;
     //public Rigidbody rb1;
     public CharacterController CC;
-	public static Color PlayerColor;
+    public static Color PlayerColor;
     public static float aRot;
     int gravity = 20;
 
@@ -16,12 +25,14 @@ public class PlayerController : MonoBehaviour {
     int fall = 1;
 
     // Use this for initialization
-    void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
 
         aRot = this.transform.rotation.y;
         CC.SimpleMove(new Vector3(0, 0, fall) * Time.deltaTime);
@@ -29,13 +40,13 @@ public class PlayerController : MonoBehaviour {
         {
             fall = 1;
             CC.SimpleMove(new Vector3(0, 0, fall));
-        }else
+        }
+        else
         {
             fall = 0;
         }
-        
-		/*
-        if (Input.GetButtonDown("Square") && CC.isGrounded)
+
+        if (joystick.Action1 && CC.isGrounded)
         {
             jumped = true;
             jumpspeed = 2;
@@ -43,7 +54,7 @@ public class PlayerController : MonoBehaviour {
             print("jumped = true");
         }
 
-        if(jumped)
+        if (jumped)
         {
             print("in jumped if");
             if (jumpspeed > 0)
@@ -57,73 +68,50 @@ public class PlayerController : MonoBehaviour {
                 print("jumped false");
                 jumped = false;
             }
-
-            
         }
 
-        if (Input.GetAxisRaw("DPad UD") > 0)
+        if (joystick.LeftStickUp)
         {
             transform.Translate(Vector3.down * 1 * Time.deltaTime);
         }
 
-        if (Input.GetAxisRaw("DPad UD") < 0)
+        if (joystick.LeftStickDown)
         {
             transform.Translate(Vector3.up * 1 * Time.deltaTime);
         }
 
-        if(Input.GetButton("L1"))
+        if (joystick.LeftStickLeft)
+        {
+            transform.Rotate(Vector3.back * 100 * Time.deltaTime);
+        }
+
+        if (joystick.LeftStickRight)
+        {
+            transform.Rotate(Vector3.forward * 100 * Time.deltaTime);
+        }
+
+
+        if (joystick.DPadUp)
         {
            transform.Translate(Vector3.down * 1 * Time.deltaTime);
         }
 
-        if (Input.GetButton("R1"))
+        if (joystick.DPadDown)
         {
             transform.Translate(Vector3.up * 1 * Time.deltaTime);
         }
 
-        
-        if (Input.GetAxisRaw("DPad LR") > 0)
+        if (joystick.DPadLeft)
         {
-            transform.Translate(Vector3.left * 1 * Time.deltaTime);
+            transform.Rotate(Vector3.back * 100 * Time.deltaTime);
         }
 
-        if (Input.GetAxisRaw("DPad LR") < 0)
+        if (joystick.DPadRight)
         {
-            transform.Translate(Vector3.right * 1 * Time.deltaTime);
+            transform.Rotate(Vector3.forward * 100 * Time.deltaTime);
         }
 
-
-        if (Input.GetAxisRaw("DPad LR") > 0)
-        {
-            transform.Rotate(Vector3.forward * 50 * Time.deltaTime);
-        }
-
-        if (Input.GetAxisRaw("DPad LR") < 0)
-        {
-            transform.Rotate(Vector3.back * 50 * Time.deltaTime);
-        }
-		*/
-
-		if (Input.GetKey(KeyCode.W)) 
-		{
-			transform.Translate(Vector3.down * 1 * Time.deltaTime);
-		}
-
-		if (Input.GetKey(KeyCode.S)) 
-		{
-			transform.Translate(Vector3.up * 1 * Time.deltaTime);
-		}
-
-		if (Input.GetKey(KeyCode.A)) 
-		{
-			transform.Rotate(Vector3.forward * 50 * Time.deltaTime);
-		}
-
-		if (Input.GetKey(KeyCode.D)) 
-		{
-			transform.Rotate(Vector3.back * 50 * Time.deltaTime);
-		}
     }
 
-		
-}
+
+    }
