@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using InControl;
-
-public class PlayerController : MonoBehaviour
+public class PlayerController2 : MonoBehaviour
 {
     private InputDevice joystick;
 
@@ -16,23 +15,24 @@ public class PlayerController : MonoBehaviour
     bool jumped = false;
 
     int fall = 1;
+
     int counter = 0;
 
     // Use this for initialization
     void Start()
     {
-
+       
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        if (counter == 0)
+        if(counter == 0)
         {
             Player1 = this.gameObject;
             CC = this.gameObject.GetComponent<CharacterController>();
-            joystick = ControllerSetup.joystick;
+            joystick = ControllerSetup.joystick2;
             counter++;
         }
 
@@ -95,7 +95,7 @@ public class PlayerController : MonoBehaviour
 
         if (joystick.DPadUp)
         {
-           transform.Translate(Vector3.down * 1 * Time.deltaTime);
+            transform.Translate(Vector3.down * 1 * Time.deltaTime);
         }
 
         if (joystick.DPadDown)
@@ -115,5 +115,4 @@ public class PlayerController : MonoBehaviour
 
     }
 
-
-    }
+}

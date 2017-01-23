@@ -11,11 +11,7 @@ public class PlayerShoot : MonoBehaviour {
 
 
     private InputDevice joystick;
-
-    private void Awake()
-    {
-        joystick = InputManager.Devices[0];
-    }
+    int counter = 0;
 
 	public void setParentName(string aName)
 	{	
@@ -31,7 +27,12 @@ public class PlayerShoot : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-    
+        
+        if(counter == 0 )
+        {
+            joystick = ControllerSetup.joystick;
+            counter++;
+        }
 
 		if (joystick.RightTrigger.WasPressed)
 		{

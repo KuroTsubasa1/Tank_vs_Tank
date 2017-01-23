@@ -1,22 +1,85 @@
 ﻿using UnityEngine;
 using System.Collections;
 using InControl;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class ControllerSetup : MonoBehaviour {
 
     public static int DeviceCounter = 0;
 
 
-    public static InputDevice joystick;
-    public static InputDevice joystick2;
-    public static InputDevice joystick3;
-    public static InputDevice joystick4;
-    public static InputDevice joystick5;
-    public static InputDevice joystick6;
-    public static InputDevice joystick7;
+    public static InputDevice joystick = null;
+    public static InputDevice joystick2 = null;
+    public static InputDevice joystick3 = null;
+    public static InputDevice joystick4 = null;
+    public static InputDevice joystick5 = null;
+    public static InputDevice joystick6 = null;
+    public static InputDevice joystick7 = null;
+
     private void Awake()
     {
-        joystick = InputManager.Devices[0];
+        int controllerConnected = InputManager.Devices.Count;
+        
+        switch(controllerConnected)
+        {
+            case 1:
+                joystick = InputManager.Devices[0];
+                print("Case: " + controllerConnected);
+                break;
+
+            case 2:
+                joystick = InputManager.Devices[0];
+                joystick2 = InputManager.Devices[1];
+                print("Case: " + controllerConnected);
+                break;
+
+            case 3:
+                joystick = InputManager.Devices[0];
+                joystick2 = InputManager.Devices[1];
+                joystick3 = InputManager.Devices[2];
+                print("Case: " + controllerConnected);
+                break;
+
+            case 4:
+                joystick = InputManager.Devices[0];
+                joystick2 = InputManager.Devices[1];
+                joystick3 = InputManager.Devices[2];
+                joystick4 = InputManager.Devices[4];
+                print("Case: " + controllerConnected);
+                break;
+
+            case 5:
+                joystick = InputManager.Devices[0];
+                joystick2 = InputManager.Devices[1];
+                joystick3 = InputManager.Devices[2];
+                joystick4 = InputManager.Devices[4];
+                joystick5 = InputManager.Devices[5];
+                print("Case: " + controllerConnected);
+                break;
+
+            case 6:
+                joystick = InputManager.Devices[0];
+                joystick2 = InputManager.Devices[1];
+                joystick3 = InputManager.Devices[2];
+                joystick4 = InputManager.Devices[4];
+                joystick5 = InputManager.Devices[5];
+                joystick6 = InputManager.Devices[6];
+                print("Case: " + controllerConnected);
+                break;
+
+            case 7:
+                joystick = InputManager.Devices[0];
+                joystick2 = InputManager.Devices[1];
+                joystick3 = InputManager.Devices[2];
+                joystick4 = InputManager.Devices[4];
+                joystick5 = InputManager.Devices[5];
+                joystick6 = InputManager.Devices[6];
+                joystick6 = InputManager.Devices[7];
+                print("Case: " + controllerConnected);
+                break;
+        }
+        
     }
 
     // Use this for initialization
@@ -26,6 +89,7 @@ public class ControllerSetup : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        print("InputDevices" + InputManager.Devices.Count);
+
+        
     }
 }
