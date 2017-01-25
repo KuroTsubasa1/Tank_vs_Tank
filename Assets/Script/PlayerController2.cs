@@ -72,7 +72,7 @@ public class PlayerController2 : MonoBehaviour
             }
         }
 
-        if (joystick.LeftStickUp)
+		if (joystick.LeftStickUp)
         {
             transform.Translate(Vector3.down * 1 * Time.deltaTime);
         }
