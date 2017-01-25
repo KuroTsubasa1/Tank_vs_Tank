@@ -18,18 +18,24 @@ public class PlayerController : MonoBehaviour
     int fall = 1;
     int counter = 0;
 
-    // Use this for initialization
-    void Start()
-    {
+    public Material red;
+    public Material blue;
+    public Material yellow;
+    public Material green;
+    public Material pink;
+    public Material orange;
+    public Material black;
+    public Material grey;
 
-    }
+
 
     // Update is called once per frame
     void Update()
-    {
-
+    {   
+       
         if (counter == 0)
         {
+
             Player1 = this.gameObject;
             CC = this.gameObject.GetComponent<CharacterController>();
 
@@ -38,40 +44,51 @@ public class PlayerController : MonoBehaviour
 			    case "Player1":
 				    joystick = ControllerSetup.joystick;
                     print(gameObject.name + " is connected as joystick");
-				    break;
+                    GetComponent<Renderer>().material = red;
+                    break;
 
 				case "Player2":
 				    joystick = ControllerSetup.joystick2;
                     print(gameObject.name + " is connected as joystick2");
+                    GetComponent<Renderer>().material = blue;
                     break;
 
 				case "Player3":
 					joystick = ControllerSetup.joystick3;
                     print(gameObject.name + " is connected as joystick3");
+                    GetComponent<Renderer>().material = yellow;
                     break;
 
 				case "Player4":
                     joystick = ControllerSetup.joystick4;
                     print(gameObject.name + " is connected as joystick4");
+                    GetComponent<Renderer>().material = green;
                     break;
 
 				case "Player5":
 					joystick = ControllerSetup.joystick5;
                     print(gameObject.name + " is connected as joystick5");
+                    GetComponent<Renderer>().material = pink;
                     break;
 
 				case "Player6":
 					joystick = ControllerSetup.joystick6;
                     print(gameObject.name + " is connected as joystick6");
+                    GetComponent<Renderer>().material = orange;
                     break;
 
 				case "Player7":
 					joystick = ControllerSetup.joystick7;
                     print(gameObject.name + " is connected as joystick7");
+                    GetComponent<Renderer>().material = black;
                     break;
-						
 
-			}
+                case "Player8":
+                    joystick = ControllerSetup.joystick8;
+                    print(gameObject.name + " is connected as joystick8");
+                    GetComponent<Renderer>().material = grey;
+                    break;
+            }
             counter++;
         }
 

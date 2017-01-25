@@ -8,7 +8,6 @@ public class ControllerSetup : MonoBehaviour {
 
     public static int DeviceCounter = 0;
 
-
     public static InputDevice joystick = null;
     public static InputDevice joystick2 = null;
     public static InputDevice joystick3 = null;
@@ -16,6 +15,8 @@ public class ControllerSetup : MonoBehaviour {
     public static InputDevice joystick5 = null;
     public static InputDevice joystick6 = null;
     public static InputDevice joystick7 = null;
+    public static InputDevice joystick8 = null;
+
 
     private void Awake()
     {
@@ -45,7 +46,7 @@ public class ControllerSetup : MonoBehaviour {
                 joystick = InputManager.Devices[0];
                 joystick2 = InputManager.Devices[1];
                 joystick3 = InputManager.Devices[2];
-                joystick4 = InputManager.Devices[4];
+                joystick4 = InputManager.Devices[3];
                 print("Case: " + controllerConnected);
                 break;
 
@@ -53,8 +54,8 @@ public class ControllerSetup : MonoBehaviour {
                 joystick = InputManager.Devices[0];
                 joystick2 = InputManager.Devices[1];
                 joystick3 = InputManager.Devices[2];
-                joystick4 = InputManager.Devices[4];
-                joystick5 = InputManager.Devices[5];
+                joystick4 = InputManager.Devices[3];
+                joystick5 = InputManager.Devices[4];
                 print("Case: " + controllerConnected);
                 break;
 
@@ -62,9 +63,9 @@ public class ControllerSetup : MonoBehaviour {
                 joystick = InputManager.Devices[0];
                 joystick2 = InputManager.Devices[1];
                 joystick3 = InputManager.Devices[2];
-                joystick4 = InputManager.Devices[4];
-                joystick5 = InputManager.Devices[5];
-                joystick6 = InputManager.Devices[6];
+                joystick4 = InputManager.Devices[3];
+                joystick5 = InputManager.Devices[4];
+                joystick6 = InputManager.Devices[5];
                 print("Case: " + controllerConnected);
                 break;
 
@@ -72,10 +73,22 @@ public class ControllerSetup : MonoBehaviour {
                 joystick = InputManager.Devices[0];
                 joystick2 = InputManager.Devices[1];
                 joystick3 = InputManager.Devices[2];
-                joystick4 = InputManager.Devices[4];
-                joystick5 = InputManager.Devices[5];
-                joystick6 = InputManager.Devices[6];
-                joystick6 = InputManager.Devices[7];
+                joystick4 = InputManager.Devices[3];
+                joystick5 = InputManager.Devices[4];
+                joystick6 = InputManager.Devices[5];
+                joystick7 = InputManager.Devices[6];
+                print("Case: " + controllerConnected);
+                break;
+
+            case 8:
+                joystick = InputManager.Devices[0];
+                joystick2 = InputManager.Devices[1];
+                joystick3 = InputManager.Devices[2];
+                joystick4 = InputManager.Devices[3];
+                joystick5 = InputManager.Devices[4];
+                joystick6 = InputManager.Devices[5];
+                joystick7 = InputManager.Devices[6];
+                joystick8 = InputManager.Devices[7];
                 print("Case: " + controllerConnected);
                 break;
         }

@@ -9,7 +9,6 @@ public class PlayerShoot : MonoBehaviour {
 	public GameObject obj;
 	public string Parentname = "test";
 
-
     private InputDevice joystick;
     int counter = 0;
 
@@ -65,6 +64,11 @@ public class PlayerShoot : MonoBehaviour {
                 case "Player7":
                     joystick = ControllerSetup.joystick7;
                     print(gameObject.name + " is connected as joystick7");
+                    break;
+
+                case "Player8":
+                    joystick = ControllerSetup.joystick8;
+                    print(gameObject.name + " is connected as joystick8");
                     break;
             }
             counter++;
