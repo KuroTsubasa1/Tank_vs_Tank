@@ -11,11 +11,12 @@ public class SpawnPlayer : MonoBehaviour {
 	void Start () {
 
 		int Devices = InputManager.Devices.Count;
+		Devices = 2;
 
-		for (int i = 0; i <= Devices; i++) 
+		for (int i = 1; i <= Devices; i++) 
 		{
 			var Tank = Instantiate (TankPrefab, new Vector3(1,1,0), Quaternion.identity);
-			Tank.name = "Player" + i + 1;
+			Tank.name = "Player" + i;
 		}
 	}
 	

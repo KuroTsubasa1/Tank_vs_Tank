@@ -32,6 +32,40 @@ public class PlayerController : MonoBehaviour
         {
             Player1 = this.gameObject;
             CC = this.gameObject.GetComponent<CharacterController>();
+
+			switch (gameObject.name) 
+			{
+			case "Player1":
+				joystick = ControllerSetup.joystick;
+				break;
+
+				case "Player2":
+				joystick = ControllerSetup.joystick2;
+				break;
+
+				case "Player3":
+					joystick = ControllerSetup.joystick3;
+				break;
+
+				case "Player4":
+					joystick = ControllerSetup.joystick4;
+				break;
+
+				case "Player5":
+					joystick = ControllerSetup.joystick5;
+				break;
+
+				case "Player6":
+					joystick = ControllerSetup.joystick6;
+				break;
+
+				case "Player7":
+					joystick = ControllerSetup.joystick7;
+				break;
+						
+
+			}
+
             joystick = ControllerSetup.joystick;
             counter++;
         }
