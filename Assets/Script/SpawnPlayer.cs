@@ -15,7 +15,8 @@ public class SpawnPlayer : MonoBehaviour {
 
 		for (int i = 1; i <= Devices; i++) 
 		{
-			var Tank = Instantiate (TankPrefab, new Vector3(1,1,0), Quaternion.identity);
+            Quaternion A = new Quaternion(0, -150, -70, 0);
+			var Tank = Instantiate (TankPrefab, new Vector3(1,1,0), A);
 			Tank.name = "Player" + i;
 		}
 	}

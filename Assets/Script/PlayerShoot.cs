@@ -27,14 +27,49 @@ public class PlayerShoot : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        
-        if(counter == 0 )
+
+        if (counter == 0)
         {
-            joystick = ControllerSetup.joystick;
+            switch (Parent.gameObject.name)
+            {
+                case "Player1":
+                    joystick = ControllerSetup.joystick;
+                    print(gameObject.name + " is connected as joystick");
+                    break;
+
+                case "Player2":
+                    joystick = ControllerSetup.joystick2;
+                    print(gameObject.name + " is connected as joystick2");
+                    break;
+
+                case "Player3":
+                    joystick = ControllerSetup.joystick3;
+                    print(gameObject.name + " is connected as joystick3");
+                    break;
+
+                case "Player4":
+                    joystick = ControllerSetup.joystick4;
+                    print(gameObject.name + " is connected as joystick4");
+                    break;
+
+                case "Player5":
+                    joystick = ControllerSetup.joystick5;
+                    print(gameObject.name + " is connected as joystick5");
+                    break;
+
+                case "Player6":
+                    joystick = ControllerSetup.joystick6;
+                    print(gameObject.name + " is connected as joystick6");
+                    break;
+
+                case "Player7":
+                    joystick = ControllerSetup.joystick7;
+                    print(gameObject.name + " is connected as joystick7");
+                    break;
+            }
             counter++;
         }
-
-		if (joystick.RightTrigger.WasPressed)
+            if (joystick.RightTrigger.WasPressed)
 		{
             joystick.Vibrate(10, 10);
 			BulletPrefab.transform.rotation = new Quaternion(BulletPrefab.transform.rotation.x,PlayerController.aRot, BulletPrefab.transform.rotation.z,0);
