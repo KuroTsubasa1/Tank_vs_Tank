@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     float jumpspeed = 0;
     bool jumped = false;
 
-    int fall = 1;
+    int fall = 2;
     int counter = 0;
 
     public Material red;
@@ -96,7 +96,7 @@ public class PlayerController : MonoBehaviour
         CC.SimpleMove(new Vector3(0, 0, fall) * Time.deltaTime);
         if (!CC.isGrounded)
         {
-            fall = 1;
+            fall = 2;
             CC.SimpleMove(new Vector3(0, 0, fall));
         }
         else
@@ -104,10 +104,12 @@ public class PlayerController : MonoBehaviour
             fall = 0;
         }
 
+       
+
         if (joystick.Action1 && CC.isGrounded)
         {
             jumped = true;
-            jumpspeed = 2;
+            jumpspeed = 2.5f;
             print("Pressed Square");
             print("jumped = true");
         }
@@ -115,10 +117,11 @@ public class PlayerController : MonoBehaviour
         if (jumped)
         {
             print("in jumped if");
+            // if (CC.isGrounded)
             if (jumpspeed > 0)
             {
                 print("in jumpspeed > 0");
-                jumpspeed -= 5 * Time.deltaTime;
+                jumpspeed -= 5 *  Time.deltaTime;
                 transform.Translate(Vector3.forward * jumpspeed * Time.deltaTime);
             }
             else
@@ -128,12 +131,12 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (joystick.LeftStickUp)
+        if (joystick.LeftStickUp && CC.isGrounded)
         {
             transform.Translate(Vector3.down * 1 * Time.deltaTime);
         }
 
-        if (joystick.LeftStickDown)
+        if (joystick.LeftStickDown && CC.isGrounded)
         {
             transform.Translate(Vector3.up * 1 * Time.deltaTime);
         }
@@ -149,12 +152,12 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        if (joystick.DPadUp)
+        if (joystick.DPadUp && CC.isGrounded)
         {
            transform.Translate(Vector3.down * 1 * Time.deltaTime);
         }
 
-        if (joystick.DPadDown)
+        if (joystick.DPadDown && CC.isGrounded)
         {
             transform.Translate(Vector3.up * 1 * Time.deltaTime);
         }
@@ -170,6 +173,5 @@ public class PlayerController : MonoBehaviour
         }
 
     }
-
 
     }
