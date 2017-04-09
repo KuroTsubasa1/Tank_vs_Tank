@@ -8,9 +8,11 @@ public class PlayerShoot : MonoBehaviour {
     public GameObject BulletPrefab;
 	public GameObject obj;
 	public string Parentname = "test";
+    public float timeStamp = 0;
 
     private InputDevice joystick;
     int counter = 0;
+    int bulletCounter = 0;
 
 	public void setParentName(string aName)
 	{	
@@ -26,6 +28,8 @@ public class PlayerShoot : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+
+        
 
         if (counter == 0)
         {
@@ -73,16 +77,34 @@ public class PlayerShoot : MonoBehaviour {
             }
             counter++;
         }
-            if (joystick.RightTrigger.WasPressed)
-		{
-            joystick.Vibrate(10, 10);
-			BulletPrefab.transform.rotation = new Quaternion(BulletPrefab.transform.rotation.x,PlayerController.aRot, BulletPrefab.transform.rotation.z,0);
-			var killMePls = (GameObject)Instantiate(BulletPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
-			Vector3 newRotation = new Vector3(0, Parent.transform.eulerAngles.y - 180, 0);
-			killMePls.gameObject.transform.eulerAngles = newRotation;
-			killMePls.transform.parent = Parent.transform;
+        
 
-			if (obj == null) 
+        if (timeStamp <= Time.time && joystick.RightTrigger.WasPressed )
+		    {
+            var killMePls = (GameObject)Instantiate(BulletPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+            if (bulletCounter <= 2)
+            {
+                joystick.Vibrate(10, 10);
+                BulletPrefab.transform.rotation = new Quaternion(BulletPrefab.transform.rotation.x, PlayerController.aRot, BulletPrefab.transform.rotation.z, 0);
+                killMePls = (GameObject)Instantiate(BulletPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+                Vector3 newRotation = new Vector3(0, Parent.transform.eulerAngles.y - 180, 0);
+                killMePls.gameObject.transform.eulerAngles = newRotation;
+                killMePls.transform.parent = Parent.transform;
+            }
+            else
+            {
+                bulletCounter++;
+            }
+
+            timeStamp = Time.time + 3;
+                print("timestamp: " + timeStamp);
+
+            if(bulletCounter == 2)
+            {
+                bulletCounter = 0;
+            }
+
+            if (obj == null) 
 			{	
 				print ("set Parentname");
 				obj = killMePls.transform.parent.gameObject;
@@ -95,8 +117,10 @@ public class PlayerShoot : MonoBehaviour {
 			killMePls.transform.parent = null;
 
 			killMePls.GetComponent<Rigidbody>().velocity = Parent.transform.up * -10	;
-		}
-			
+            }
+        }
+        
+
+
     }
-		
-}       
+		     

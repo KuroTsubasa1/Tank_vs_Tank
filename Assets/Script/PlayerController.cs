@@ -143,11 +143,13 @@ public class PlayerController : MonoBehaviour
 
         if (joystick.LeftStickLeft)
         {
+            transform.Translate(Vector3.down * 1 * Time.deltaTime);
             transform.Rotate(Vector3.back * 100 * Time.deltaTime);
         }
 
         if (joystick.LeftStickRight)
         {
+            transform.Translate(Vector3.down * 1 * Time.deltaTime);
             transform.Rotate(Vector3.forward * 100 * Time.deltaTime);
         }
 
